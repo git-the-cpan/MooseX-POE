@@ -1,7 +1,6 @@
 Build.PL
 Changes
 ex/candygram.pl
-ex/tbray.data
 ex/tbray.pl
 inc/Module/AutoInstall.pm
 inc/Module/Install.pm
@@ -28,6 +27,5 @@ t/00.load.t
 t/01_basic.t
 t/02_forkbomb.t
 t/kwalitee.t
-t/perlcritic.t
 t/pod-coverage.t
 t/pod.t
