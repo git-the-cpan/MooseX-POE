@@ -6,23 +6,29 @@ use POE;
 extends 'Moose::Meta::Instance';
 
 sub create_instance {
-    my $self  = shift;
-    my $class = $self->associated_metaclass->name;
-
+    my $self = shift;
     my $instance = $self->bless_instance_structure( {} );
-    $instance->{session} = POE::Session->create(
+    $instance->{session} = $self->get_new_session($instance);
+    return $instance;
+}
+
+sub get_new_session {
+    my ( $self, $instance ) = @_;
+    my $meta = $self->associated_metaclass;
+    return POE::Session->create(
         inline_states => { _start => sub { POE::Kernel->yield('START') }, },
         object_states => [
             $instance => {
-                map { $_->{name} => $_->{name} }
-                  grep { $_->{code}->isa('MooseX::POE::Meta::Method::State') }
-                  $self->associated_metaclass->compute_all_applicable_methods
+                _stop => 'STOP',
+                map { $_ => $meta->get_state_method_name($_) }
+                  map  { $_->meta->get_events }
+                  grep { $_->meta->isa('MooseX::POE::Meta::Class') }
+                  $meta->linearized_isa
             },
         ],
         args => [$instance],
         heap => {},
     );
-    return $instance;
 }
 
 sub get_session_id {
@@ -64,7 +70,7 @@ MooseX::POE::Meta::Instance - A Instance Metaclass for MooseX::POE
 
 =head1 SYNOPSIS
 
-    use metaclass 'MooseX::POE::Meta::Class' => 
+    use metaclass 'MooseX::Async::Meta::Class' => 
     ( instance_metaclass => 'MooseX::POE::Meta::Instance' );
 
   

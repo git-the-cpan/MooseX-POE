@@ -1,10 +1,11 @@
 --- 
 abstract: The Illicit Love Child of Moose and POE
-author: Chris Prather  C<< <perigrin@cpan.org> >>
+author: 
+  - Chris Prather  C<< <perigrin@cpan.org> >>
 build_requires: 
   Test::More: 0.42
 distribution_type: module
-generated_by: Module::Install version 0.67
+generated_by: Module::Install version 0.68
 license: perl
 meta-spec: 
   url: http://module-build.sourceforge.net/META-spec-v1.3.html
@@ -17,7 +18,8 @@ no_index:
     - t
 requires: 
   Moose: 0.26
+  MooseX::Async: 0.01
   POE: 0.9999
   Sub::Exporter: 0
   Sub::Name: 0
-version: 0.02
+version: 0.03

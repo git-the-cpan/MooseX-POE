@@ -1,13 +1,12 @@
 package MooseX::POE;
 use strict;
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 use Moose;
 use MooseX::POE::Meta::Class;
-use MooseX::POE::Meta::Method::State;
 use MooseX::POE::Object;
 use Sub::Name 'subname';
 use Sub::Exporter;
-
+use B qw(svref_2object);
 {
     my $CALLER;
     my %exports = (
@@ -28,13 +27,20 @@ use Sub::Exporter;
     );
 
     sub import {
+        my ( $pkg, $subclass ) = @_;
         $CALLER = caller();
         strict->import;
         warnings->import;
 
         return if $CALLER eq 'main';
-        Moose::init_meta( $CALLER, 'MooseX::POE::Object',
-            'MooseX::POE::Meta::Class' );
+        my $object_class = 'MooseX::POE::Object';
+        my $meta_class   = 'MooseX::POE::Meta::Class';
+
+        if ($subclass) {
+            $object_class .= '::' . ucfirst $subclass;
+        }
+
+        Moose::init_meta( $CALLER, $object_class, $meta_class );
         Moose->import( { into => $CALLER } );
         ## no critic
         eval qq{package $CALLER; use POE; };
@@ -80,12 +86,12 @@ MooseX::POE - The Illicit Love Child of Moose and POE
 
 =head1 VERSION
 
-This document describes Moose::POE::Object version 0.0.2
+This document describes MooseX::POE version 0.0.3
 
 =head1 SYNOPSIS
 
     package Counter;
-    use MooseX::Poe;
+    use MooseX::POE;
 
     has name => (
         isa     => 'Str',
@@ -107,11 +113,12 @@ This document describes Moose::POE::Object version 0.0.2
 
     event increment => sub {
         my ($self) = @_;
+        print "Count is now " . $self->count . "\n";
         $self->count( $self->count + 1 );
         $self->yield('increment') unless $self->count > 3;
-    }
+    };
 
-    no MooseX::Poe;
+    no MooseX::POE;
     
     Counter->new();
     POE::Kernel->run();
@@ -126,22 +133,15 @@ MooseX::POE::Object is a Moose wrapper around a POE::Session.
 
 =item event $name $subref
 
-Create an event handler named $name. You can also implicitly create 
-event handlers by using the 'on_' prefix, thus the example in the 
-synopsis could also be:
-
-    sub on_increment { 
-        my ($self) = @_;
-        $self->count($self->count + 1);
-        $self->yield('increment') unless $self->count > 3;
-    }
-    
-The 'on_' syntax is supported because it is the emerging standard set 
-by L<POE::Stage>.
+Create an event handler named $name. 
 
 =back
 
 =head1 METHODS
+
+Default methods are provided by L<MooseX::POE::Object> which is the default 
+baseclass for MooseX::POE objects. These are the methods for the MooseX::POE 
+package itself.
 
 =over
 
@@ -190,7 +190,7 @@ None reported.
 No bugs have been reported.
 
 Please report any bugs or feature requests to
-C<bug-moose-poe-object@rt.cpan.org>, or through the web interface at
+C<bug-moosex-poe@rt.cpan.org>, or through the web interface at
 L<http://rt.cpan.org>.
 
 
