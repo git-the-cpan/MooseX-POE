@@ -1,11 +1,17 @@
 Revision history for MooseX-POE
 
-0.060 ???
+0.070 2008-02-21
+  +Sessions are no longer leaked because they are only referenced by ID (nothingmuch)
+  +Add MooseX::POE::Role (nothingmuch)
+  +Add MooseX::POE::Aliased role (nothingmuch)
+  +attributes can now be weak_ref=>1 (rjbs)
+
+0.060 2008-01-25
   +START now get all the POE arguments again like they used to. (ash)
 
 0.050 2008-01-22
   +startup calls STARTALL, which calls all STARTS (like BUILDALL, etc.) (rjbs)
-  +fix to the fix for MooseX::Daemonize skipping (autarch)
+  +fix to the fix for MooseX::Daemonize skipping (Dave Rolsky)
   +fixing MooseX::Object::Deferred so that it brings in the right metaclass 
 	-- this feature is alpha and has 0 tests YMMV
 
