@@ -1,9 +1,12 @@
 Revision history for MooseX-POE
 
-0.070 2008-02-21
+0.080
+  +add MooseX::POE::SweetArgs metaclass (hdp)
   +Sessions are no longer leaked because they are only referenced by ID (nothingmuch)
   +Add MooseX::POE::Role (nothingmuch)
   +Add MooseX::POE::Aliased role (nothingmuch)
+
+0.070 2008-02-03
   +attributes can now be weak_ref=>1 (rjbs)
 
 0.060 2008-01-25
