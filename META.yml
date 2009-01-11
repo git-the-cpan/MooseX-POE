@@ -24,4 +24,4 @@ requires:
   Sub::Name: 0.04
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.09
+version: 0.1

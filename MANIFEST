@@ -39,11 +39,10 @@ Makefile.PL
 MANIFEST			This list of files
 MANIFEST.SKIP
 META.yml
-README
 t/01_basic.t
 t/02_poe_forkbomb.t
 t/03_extend.t
 t/04_with.t
 t/05_daemonize.t
 t/06_sweet.t
-t/aliased.t
+t/07_aliased.t
