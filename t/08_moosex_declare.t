@@ -1,11 +1,18 @@
-#!/usr/bin/perl -w
-
 use strict;
-use Test::More tests => 6;
+use warnings;
+
+use Test::More;
 use Test::Moose;
 
-{
-    package Rollo;
+BEGIN { 
+  eval "use MooseX::Declare;";
+  plan skip_all => "MooseX::Declare not installed; skipping" if $@;
+}
+
+plan tests => 6;
+
+
+role Rollo {
     use MooseX::POE::Role;
     
     sub foo { ::pass('foo!')}
@@ -13,12 +20,11 @@ use Test::Moose;
     event yarr => sub { ::pass("yarr!") }
 }
 
-{
-    package App;
+does_ok(Rollo->meta, "MooseX::POE::Meta::Role");
+
+class App with Rollo {
     use MooseX::POE;
-    
-    with qw(Rollo);
-    
+
     sub START { 
         my ($self) = $_[OBJECT];
         ::pass('START');
@@ -37,5 +43,4 @@ use Test::Moose;
 
 my $obj = App->new;
 
-does_ok($obj, 'Rollo');
 POE::Kernel->run;

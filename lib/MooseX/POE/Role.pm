@@ -1,50 +1,41 @@
 package MooseX::POE::Role;
-use Moose;
+
 use MooseX::POE::Meta::Role;
-use Sub::Name 'subname';
-use Sub::Exporter;
-use B qw(svref_2object);
-{
-    my $CALLER;
-    my %exports = (
-        event => sub {
-            my $class = $CALLER;
-            return subname 'MooseX::POE::Role::event' => sub ($&) {
-                my ( $name, $method ) = @_;
-                $class->meta->add_state_method( $name => $method );
-            };
-        },
-    );
 
-    my $exporter = Sub::Exporter::build_exporter(
-        {
-            exports => \%exports,
-            groups  => { default => [':all'] }
-        }
-    );
+use Moose::Exporter;
 
-    sub import {
-        my ( $pkg ) = @_;
-        $CALLER = caller();
-        strict->import;
-        warnings->import;
-
-        return if $CALLER eq 'main';
-        my $meta_class   = 'MooseX::POE::Meta::Role';
-
-        my $meta = MooseX::POE::Meta::Role->initialize($CALLER);
-        $meta->alias_method(meta => sub { $meta } );
-
-        Moose::Role->import( { into => $CALLER } );
-        ## no critic
-        eval qq{package $CALLER; use POE; };
-        ## use critic
-        die $@ if $@;
-
-        goto $exporter;
-    }
+sub event ($&) {
+  my ( $class, $name, $method ) = @_;
+  $class->meta->add_state_method( $name => $method );
 }
-no Moose;
+
+Moose::Exporter->setup_import_methods(
+  with_caller => [ qw/event/ ],
+  also => 'Moose::Role'
+);
+
+sub init_meta {
+  my ($class, %p) = @_;
+
+  my $for = $p{for_class};
+
+  eval qq{package $for; use POE; };
+
+  my $meta;
+  unless ($for->can('meta')) {
+    $meta = Moose::Role->init_meta(for_class => $for);
+  } else {
+    $meta = $for->meta;
+  }
+
+  Moose::Util::MetaRole::apply_metaclass_roles(
+    for_class => $p{for_class},
+    metaclass_roles => ['MooseX::POE::Meta::Role']
+  );
+}
+
+no Moose::Role;
+
 1;
 __END__
 
@@ -65,7 +56,7 @@ MooseX::POE::Role - Eventful roles
   
 =head1 DESCRIPTION
 
-This is what Moose::Role is to Moose but with MooseX::POE.
+This is what MooseX::POE is to Moose but with Moose::Role.
 
 =head1 KEYWORDS
 
@@ -78,3 +69,22 @@ Create an event handler named $name.
 =back
 
 =cut
+
+=head1 SEE ALSO
+
+L<MooseX::POE>
+
+=head1 AUTHOR
+
+Chris Prather  C<< <perigrin@cpan.org> >>
+
+Ash Berlin C<< <ash@cpan.org> >>
+
+=head1 LICENCE AND COPYRIGHT
+
+Copyright (c) 2007-2009, Chris Prather C<< <perigrin@cpan.org> >>, Ash Berlin
+C<< <ash@cpan.org> >>. All rights reserved.
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
+

@@ -1,11 +1,29 @@
-package MooseX::POE::Object;
-use strict;
-our $VERSION = '0.050';
+package MooseX::POE::Meta::Trait::Object;
 
-use metaclass 'MooseX::POE::Meta::Class' =>
-  ( instance_metaclass => 'MooseX::POE::Meta::Instance' );
+use Moose::Role;
 
-use Moose;
+sub new {
+    my $class = shift;
+    my $params = $class->BUILDARGS(@_);
+    my $self = $class->meta->new_object($params);
+
+    my $session = POE::Session->create(
+        inline_states => { _start => sub { POE::Kernel->yield('STARTALL') }, },
+        object_states => [
+            $self => {
+              $self->meta->get_all_events,
+              STARTALL => 'STARTALL',
+              _stop  => 'STOPALL',
+            },
+        ],
+        args => [$self],
+        heap => ($self->{heap} ||= {}),
+    );
+    $self->{session_id} = $session->ID;
+
+    $self->BUILDALL($params);
+    return $self;
+}
 
 sub get_session_id {
     my ($self) = @_;
@@ -16,10 +34,6 @@ sub yield { my $self = shift; POE::Kernel->post( $self->get_session_id, @_ ) }
 sub call { my $self = shift; POE::Kernel->call( $self->get_session_id, @_ ) }
 
 sub STARTALL {
-    # NOTE: we ask Perl if we even 
-    # need to do this first, to avoid
-    # extra meta level calls
-  return unless $_[0]->can('START');    
   my ($self, @params) = @_;
   foreach my $method (reverse $self->meta->find_all_methods_by_name('START')) {
     $method->{code}->($self, @params);
@@ -28,10 +42,6 @@ sub STARTALL {
 
 
 sub STOPALL {
-    # NOTE: we ask Perl if we even 
-    # need to do this first, to avoid
-    # extra meta level calls
-  return unless $_[0]->can('STOP');    
   my ($self, $params) = @_;
   foreach my $method (reverse $self->meta->find_all_methods_by_name('STOP')) {
     $method->{code}->($self, $params);
@@ -52,19 +62,15 @@ __PACKAGE__->meta->alias_method( _child => 'CHILD' )
 __PACKAGE__->meta->alias_method( _parent => 'PARENT' )
   if __PACKAGE__->meta->has_method('PARENT');
 
-no Moose;  # unimport Moose's keywords so they won't accidentally become methods
-1;         # Magic true value required at end of module
+no Moose::Role;
+
+1;
+
 __END__
 
 =head1 NAME
 
-MooseX::POE::Object - The base class for MooseX::Poe
-
-
-=head1 VERSION
-
-This document describes Moose::POE::Object version 0.0.1
-
+MooseX::POE::Meta::Trait::Object - The base class role for MooseX::Poe
 
 =head1 SYNOPSIS
 
@@ -100,7 +106,8 @@ This document describes Moose::POE::Object version 0.0.1
   
 =head1 DESCRIPTION
 
-MooseX::POE::Object is a Moose::Object subclass that implements a POE::Session
+MooseX::POE::Meta::TraitObject is a role that is applied to the object base
+classe (usually Moose::Object) that implements a POE::Session.
 
 =head1 DEFAULT METHODS
 
@@ -108,15 +115,23 @@ MooseX::POE::Object is a Moose::Object subclass that implements a POE::Session
 
 =item get_session_id
 
-Get the internal Session ID, this is useful to hand to other POE aware functions.
+Get the internal POE Session ID, this is useful to hand to other POE aware
+functions.
 
 =item yield
 
 A cheap alias for POE::Kernel->yield() which will gurantee posting to the object's session.
 
-=item meta 
+=item STARTALL
 
-The metaclass accessor provided by C<Moose::Object>.
+Along similar lines to Moose's C<BUILDALL> method which calls all the C<BUILD>
+methods, this function will call all the C<START> methods in your inheritance
+hierarchy automatically when POE first runs your session. (This corresponds to
+the C<_start> event from POE.)
+
+=item STOPALL
+
+Along similar lines to C<STARTALL>, but for C<STOP> instead.
 
 =back
 
@@ -136,55 +151,17 @@ The metaclass accessor provided by C<Moose::Object>.
 
 =back
 
-=head1 DEPENDENCIES
-
-=for author to fill in:
-    A list of all the other modules that this module relies upon,
-    including any restrictions on versions, and an indication whether
-    the module is part of the standard Perl distribution, part of the
-    module's distribution, or must be installed separately. ]
-
-L<Moose>, L<POE>
-
-
-=head1 INCOMPATIBILITIES
-
-=for author to fill in:
-    A list of any modules that this module cannot be used in conjunction
-    with. This may be due to name conflicts in the interface, or
-    competition for system or program resources, or due to internal
-    limitations of Perl (for example, many modules that use source code
-    filters are mutually incompatible).
-
-None reported.
-
-
-=head1 BUGS AND LIMITATIONS
-
-=for author to fill in:
-    A list of known problems with the module, together with some
-    indication Whether they are likely to be fixed in an upcoming
-    release. Also a list of restrictions on the features the module
-    does provide: data types that cannot be handled, performance issues
-    and the circumstances in which they may arise, practical
-    limitations on the size of data sets, special cases that are not
-    (yet) handled, etc.
-
-No bugs have been reported.
-
-Please report any bugs or feature requests to
-C<bug-moose-poe-object@rt.cpan.org>, or through the web interface at
-L<http://rt.cpan.org>.
-
 
 =head1 AUTHOR
 
 Chris Prather  C<< <perigrin@cpan.org> >>
 
+Ash Berlin C<< <ash@cpan.org> >>
 
 =head1 LICENCE AND COPYRIGHT
 
-Copyright (c) 2007, Chris Prather C<< <perigrin@cpan.org> >>. All rights reserved.
+Copyright (c) 2007-2009, Chris Prather C<< <perigrin@cpan.org> >>, Ash Berlin
+C<< <ash@cpan.org> >>. All rights reserved.
 
 This module is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself. See L<perlartistic>.

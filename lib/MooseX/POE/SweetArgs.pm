@@ -1,15 +1,24 @@
 package MooseX::POE::SweetArgs;
 
-use Moose;
-extends qw(MooseX::POE::Meta::Class);
+use Moose ();
+use MooseX::POE;
+use Moose::Exporter;
 
-around add_state_method => sub {
-  my $orig = shift;
-  my ($self, $name, $method) = @_;
-  $orig->($self, $name, sub {
-    $method->(@_[POE::Session::OBJECT(), POE::Session::ARG0()..$#_])
-  });
-}; 
+
+Moose::Exporter->setup_import_methods(
+    also        => 'MooseX::POE',
+);
+
+sub init_meta {
+    my ($class, %args) = @_;
+    MooseX::POE->init_meta(%args);
+
+    Moose::Util::MetaRole::apply_metaclass_roles(
+      for_class => $args{for_class},
+      metaclass_roles => [ 'MooseX::POE::Meta::Trait::SweetArgs' ],
+    );
+}
+
 
 1;
 
@@ -22,13 +31,14 @@ MooseX::POE::SweetArgs - sugar around MooseX::POE event arguments
   package Thing;
 
   # must come before MooseX::POE!
-  use metaclass 'MooseX::POE::SweetArgs';
-  use MooseX::POE;
+  use MooseX::POE::SweetArgs;
 
   # declare events like usual
   event on_success => sub {
     # unpack args like a Perl sub, not a POE event
     my ($self, $foo, $bar) = @_;
+    ...
+    POE::Kernel->yield('foo');
     ...
   };
 
@@ -43,5 +53,28 @@ Using MooseX::POE::SweetArgs as a metaclass lets you avoid this, and just use
 C<@_> as normal:
 
   my ($self, $foo, $bar) = @_;
+
+Since the POE kernel is a singleton, you can access it using class methods, as
+shown in the synopsis.
+
+In all other respects, this behaves exactly like MooseX::POE
+
+=head1 SEE ALSO
+
+L<MooseX::POE>
+
+=head1 AUTHOR
+
+Chris Prather  C<< <perigrin@cpan.org> >>
+
+Ash Berlin C<< <ash@cpan.org> >>
+
+=head1 LICENCE AND COPYRIGHT
+
+Copyright (c) 2007-2009, Chris Prather C<< <perigrin@cpan.org> >>, Ash Berlin
+C<< <ash@cpan.org> >>. All rights reserved.
+
+This module is free software; you can redistribute it and/or
+modify it under the same terms as Perl itself. See L<perlartistic>.
 
 =cut

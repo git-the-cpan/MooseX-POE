@@ -1,6 +1,13 @@
 Revision history for MooseX-POE
 
-0.100 ???
+0.200 2009-04-02
+  + Fairly substantial re-write of the internals (ash)
+    + Made everything a Metaclass Role / Trait. This will break backwards
+    compatibility with the previous method of using MooseX::POE::SweetArgs. (ash)
+    + Now compatible with MooseX::Declare ... in theory ... with tests (ash)
+  + Add example from the POE Cookbook (LordVorp)
+
+0.100 2009-01-11
   + Change to Moose::Exporter
 
 0.090 2008-11-08
