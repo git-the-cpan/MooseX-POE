@@ -1,3 +1,4 @@
+#!/usr/bin/env perl
 use strict;
 use warnings;
 
@@ -13,7 +14,7 @@ plan tests => 6;
 
 
 role Rollo {
-    use MooseX::POE::Role;
+    use MooseX::POE::Role qw(event);
     
     sub foo { ::pass('foo!')}
 
@@ -23,17 +24,17 @@ role Rollo {
 does_ok(Rollo->meta, "MooseX::POE::Meta::Role");
 
 class App with Rollo {
-    use MooseX::POE;
+    use MooseX::POE::SweetArgs qw(event);
 
     sub START { 
-        my ($self) = $_[OBJECT];
+        my ($self) = @_;
         ::pass('START');
         $self->foo();
         $self->yield('next');
     }
     
     event next => sub {
-        my ($self) = $_[OBJECT];
+        my ($self) = @_;
         ::pass('next');
         $self->yield("yarr");
     };
