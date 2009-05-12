@@ -18,9 +18,9 @@ no_index:
     - t
 requires:
   Moose: 0.73
-  MooseX::Async: 0.01
-  POE: 0.9999
+  MooseX::Async: 0.07
+  POE: 1.004
   Sub::Name: 0.04
 resources:
   license: http://dev.perl.org/licenses/
-version: 0.201
+version: 0.202
