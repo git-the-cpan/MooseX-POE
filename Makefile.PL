@@ -15,4 +15,7 @@ build_requires 'Test::More' => '0.42';
 
 no_index 'directory' => 'ex';
 
+auto_set_repository;
+auto_manifest;
+auto_install;
 WriteAll;
