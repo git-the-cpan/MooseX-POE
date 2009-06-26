@@ -18,6 +18,7 @@ inc/Module/Install/Can.pm
 inc/Module/Install/Fetch.pm
 inc/Module/Install/Makefile.pm
 inc/Module/Install/Metadata.pm
+inc/Module/Install/Repository.pm
 inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 lib/MooseX/POE.pm
@@ -43,3 +44,5 @@ t/05_daemonize.t
 t/06_sweet.t
 t/07_aliased.t
 t/08_moosex_declare.t
+t/09_extend.t
+t/10_immutability.t
