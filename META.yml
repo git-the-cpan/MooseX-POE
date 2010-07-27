@@ -4,11 +4,11 @@ author:
   - 'Chris Prather  C<< <chris@prather.org> >>'
 build_requires:
   ExtUtils::MakeMaker: 6.42
-  Test::More: 0.42
+  Test::More: 0.90
 configure_requires:
   ExtUtils::MakeMaker: 6.42
 distribution_type: module
-generated_by: 'Module::Install version 0.91'
+generated_by: 'Module::Install version 1.00'
 license: perl
 meta-spec:
   url: http://module-build.sourceforge.net/META-spec-v1.4.html
@@ -20,11 +20,9 @@ no_index:
     - inc
     - t
 requires:
-  Moose: 0.73
-  MooseX::Async: 0.07
+  Moose: 0.90
   POE: 1.004
-  Sub::Name: 0.04
 resources:
   license: http://dev.perl.org/licenses/
   repository: git://github.com/perigrin/moosex-poe.git
-version: 0.205
+version: 0.206

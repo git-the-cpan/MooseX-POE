@@ -23,7 +23,9 @@ inc/Module/Install/Win32.pm
 inc/Module/Install/WriteAll.pm
 lib/MooseX/POE.pm
 lib/MooseX/POE/Aliased.pm
+lib/MooseX/POE/Meta/Method/State.pm
 lib/MooseX/POE/Meta/Role.pm
+lib/MooseX/POE/Meta/Trait.pm
 lib/MooseX/POE/Meta/Trait/Class.pm
 lib/MooseX/POE/Meta/Trait/Constructor.pm
 lib/MooseX/POE/Meta/Trait/Instance.pm
@@ -34,6 +36,7 @@ lib/MooseX/POE/SweetArgs.pm
 Makefile.PL
 MANIFEST			This list of files
 META.yml
+README.md
 t/01_basic.t
 t/02_poe_forkbomb.t
 t/03_extend.t
@@ -46,3 +49,7 @@ t/07_aliased.t
 t/08_moosex_declare.t
 t/09_extend.t
 t/10_immutability.t
+t/11_regular_moose.t
+t/12_more_roles.t
+t/13_method_modifiers.t
+t/14_bug_double_build.t

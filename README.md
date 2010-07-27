@@ -1,51 +1,12 @@
-package MooseX::POE;
-
-our $VERSION = '0.206';
-
-use Moose ();
-use Moose::Exporter;
-
-my ( $import, $unimport, $init_meta ) = Moose::Exporter->setup_import_methods(
-    with_caller     => [qw(event)],
-    also            => 'Moose',
-    install         => [qw(import unimport)],
-    class_metaroles => {
-        class       => ['MooseX::POE::Meta::Trait::Class'],
-        constructor => ['MooseX::POE::Meta::Trait::Constructor'],
-        instance    => ['MooseX::POE::Meta::Trait::Instance'],
-    },
-    base_class_roles => ['MooseX::POE::Meta::Trait::Object'],
-);
-
-sub init_meta {
-    my ( $class, %args ) = @_;
-
-    my $for = $args{for_class};
-    eval qq{package $for; use POE; };
-
-    Moose->init_meta( for_class => $for );
-
-    goto $init_meta;
-}
-
-sub event {
-    my ( $caller, $name, $method ) = @_;
-    my $class = Moose::Meta::Class->initialize($caller);
-    $class->add_state_method( $name => $method );
-}
-
-1;
-__END__
-
-=head1 NAME
+# NAME
 
 MooseX::POE - The Illicit Love Child of Moose and POE
 
-=head1 VERSION
+# VERSION
 
 This document describes MooseX::POE version 0.205
 
-=head1 SYNOPSIS
+# SYNOPSIS
 
     package Counter;
     use MooseX::POE;
@@ -79,6 +40,7 @@ or with L<MooseX::Declare|MooseX::Declare>:
     class Counter {
         use MooseX::POE::SweetArgs qw(event);
         
+
         has count => (
             isa     => 'Int',
             is      => 'rw',
@@ -86,11 +48,13 @@ or with L<MooseX::Declare|MooseX::Declare>:
             default => sub { 0 },
         );
         
+
         sub START { 
             my ($self) = @_;
             $self->yield('increment')  
         }
         
+
         event increment => sub {
             my ($self) = @_;
             print "Count is now " . $self->count . "\n";
@@ -102,43 +66,36 @@ or with L<MooseX::Declare|MooseX::Declare>:
     Counter->new();
     POE::Kernel->run();
 
-=head1 DESCRIPTION
+# DESCRIPTION
 
 MooseX::POE is a Moose wrapper around a POE::Session.
 
-=head1 KEYWORDS
+# KEYWORDS
 
-=over
-
-=item event $name $subref
+- event $name $subref
 
 Create an event handler named $name. 
 
-=back
-
-=head1 METHODS
+# METHODS
 
 Default POE-related methods are provided by L<MooseX::POE::Meta::Trait::Object|MooseX::POE::Meta::Trait::Object>
 which is applied to your base class (which is usually L<Moose::Object|Moose::Object>) when
 you use this module. See that module for the documentation for. Below is a list
 of methods on that class so you know what to look for:
 
-=over
+- get_session_id
 
-=item get_session_id
+- yield
 
-=item yield
+- call
 
-=item call
+- STARTALL
 
-=item STARTALL
-
-=item STOPALL
-
-=back
+- STOPALL
 
 
-=head1 NOTES ON USAGE WITH L<MooseX::Declare|MooseX::Declare>
+
+# NOTES ON USAGE WITH L<MooseX::Declare|MooseX::Declare>
 
 L<MooseX::Declare|MooseX::Declare> support is still "experimental". Meaning that I don't use it,
 I don't have any code that uses it, and thus I can't adequately say that it
@@ -147,7 +104,7 @@ tests and the SYNOPSIS cover.
 
 That said there are a few caveats that have turned up during testing. 
 
-1. The C<method> keyword doesn't seem to work as expected. This is an
+1. The `method` keyword doesn't seem to work as expected. This is an
 integration issue that is being resolved but I want to wait for
 L<MooseX::Declare|MooseX::Declare> to gain some more polish on their slurpy
 arguments.
@@ -169,33 +126,34 @@ L<MooseX::Declare|MooseX::Declare> doesn't like. This is fixed in the Git
 version of L<MooseX::Declare|MooseX::Declare> but that version (as of this
 writing) is not on the CPAN.
 
-=head1 DEPENDENCIES
+# DEPENDENCIES
 
 L<Moose|Moose> 
 
 L<POE|POE>
 
-=head1 AUTHOR
+# AUTHOR
 
-Chris Prather  C<< <chris@prather.org> >>
+Chris Prather  `<chris@prather.org>`
 
-Ash Berlin C<< <ash@cpan.org> >>
+Ash Berlin `<ash@cpan.org>`
 
-Chris Williams C<<chris@bingosnet.co.uk>>
+Chris Williams `<chris@bingosnet.co.uk`>
 
 Yuval (nothingmuch) Kogman 
 
-=head1 LICENCE AND COPYRIGHT
+# LICENCE AND COPYRIGHT
 
-Copyright (c) 2007-2009, Chris Prather C<< <chris@prather.org> >>, Ash Berlin
-C<< <ash@cpan.org> >>, Chris Williams C<<chris@bingosnet.co.uk>>, Yuval
+Copyright (c) 2007-2009, Chris Prather `<chris@prather.org>`, Ash Berlin
+`<ash@cpan.org>`, Chris Williams `<chris@bingosnet.co.uk`>, Yuval
 (nothingmuch) Kogman. Some rights reserved.
 
 This module is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself. See L<perlartistic>.
+modify it under the same terms as Perl itself. See [perlartistic](http://search.cpan.org/perldoc?perlartistic).
 
 
-=head1 DISCLAIMER OF WARRANTY
+
+# DISCLAIMER OF WARRANTY
 
 BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
 FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
