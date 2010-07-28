@@ -53,3 +53,4 @@ t/11_regular_moose.t
 t/12_more_roles.t
 t/13_method_modifiers.t
 t/14_bug_double_build.t
+t/14_meh.t
