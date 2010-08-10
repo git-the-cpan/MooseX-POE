@@ -1,6 +1,7 @@
 package MooseX::POE::Meta::Trait::Object;
 
 use Moose::Role;
+use POE::Session;
 
 sub new {
     my $class  = shift;
@@ -17,6 +18,7 @@ sub new {
                 _stop    => 'STOPALL',
                 _child   => 'CHILD',
                 _parent  => 'PARENT',
+                _call_kernel_with_my_session => '_call_kernel_with_my_session',
             },
         ],
         args => [$self],
@@ -32,9 +34,26 @@ sub get_session_id {
     my ($self) = @_;
     return $self->meta->get_meta_instance->get_session_id($self);
 }
+
 sub yield { my $self = shift; POE::Kernel->post( $self->get_session_id, @_ ) }
 
 sub call { my $self = shift; POE::Kernel->call( $self->get_session_id, @_ ) }
+
+sub _call_kernel_with_my_session {
+	my ( $self, $function, @args ) = @_[ OBJECT, ARG0..$#_ ];
+	POE::Kernel->$function( @args );
+}
+
+sub delay { my $self = shift; $self->call( _call_kernel_with_my_session => 'delay' => @_ ) }
+sub alarm { my $self = shift; $self->call( _call_kernel_with_my_session => 'alarm', @_ ) }
+sub alarm_add { my $self = shift; $self->call( _call_kernel_with_my_session => 'alarm_add', @_ ) }
+sub delay_add { my $self = shift; $self->call( _call_kernel_with_my_session => 'delay_add', @_ ) }
+sub alarm_set { my $self = shift; $self->call( _call_kernel_with_my_session => 'alarm_set', @_ ) }
+sub alarm_adjust { my $self = shift; $self->call( _call_kernel_with_my_session => 'alarm_adjust', @_ ) }
+sub alarm_remove { my $self = shift; $self->call( _call_kernel_with_my_session => 'alarm_remove', @_ ) }
+sub alarm_remove_all { my $self = shift; $self->call( _call_kernel_with_my_session => 'alarm_remove_all', @_ ) }
+sub delay_set { my $self = shift; $self->call( _call_kernel_with_my_session => 'delay_set', @_ ) }
+sub delay_adjust { my $self = shift; $self->call( _call_kernel_with_my_session => 'delay_adjust', @_ ) }
 
 sub STARTALL {
     my ( $self, @params ) = @_;
@@ -72,7 +91,7 @@ __PACKAGE__->meta->add_method(
 __PACKAGE__->meta->add_method(
     _parent => __PACKAGE__->meta->get_method('PARENT') )
     if __PACKAGE__->meta->has_method('PARENT');
-
+	
 no Moose::Role;
 
 1;
@@ -131,7 +150,29 @@ functions.
 
 =item yield
 
-A cheap alias for POE::Kernel->yield() which will gurantee posting to the object's session.
+=item call
+
+=item delay
+
+=item alarm
+
+=item alarm_add
+
+=item delay_add
+
+=item alarm_set
+
+=item alarm_adjust
+
+=item alarm_remove
+
+=item alarm_remove_all
+
+=item delay_set
+
+=item delay_adjust
+
+A cheap alias for the same POE::Kernel function which will gurantee posting to the object's session.
 
 =item STARTALL
 
@@ -165,9 +206,13 @@ Along similar lines to C<STARTALL>, but for C<STOP> instead.
 
 =head1 AUTHOR
 
-Chris Prather  C<< <perigrin@cpan.org> >>
+Chris Prather C<< <perigrin@cpan.org> >>
 
 Ash Berlin C<< <ash@cpan.org> >>
+
+=head1 CONTRIBUTORS
+
+Torsten Raudssus C<< <torsten@raudssus.de> >>
 
 =head1 LICENCE AND COPYRIGHT
 
