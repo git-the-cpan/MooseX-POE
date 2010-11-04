@@ -1,5 +1,8 @@
 package MooseX::POE::Meta::Trait::Class;
-
+BEGIN {
+  $MooseX::POE::Meta::Trait::Class::VERSION = '0.210';
+}
+# ABSTRACT: No achmed inside
 use Moose::Role;
 
 with qw(MooseX::POE::Meta::Trait);
@@ -51,40 +54,63 @@ sub get_all_events {
 
 no Moose::Role;
 1;
-__END__
+
+
+=pod
 
 =head1 NAME
 
-MooseX::POE::Meta::Trait::Class
+MooseX::POE::Meta::Trait::Class - No achmed inside
 
-=head1 SYNOPSIS
+=head1 VERSION
 
-    use MooseX::POE::Meta::Trait::Constructor;
-
-=head1 DESCRIPTION
-
-The MooseX::POE::Meta::Trait::Constructor class implements ...
+version 0.210
 
 =head1 METHODS
 
-=over 
+=head2 get_all_events
 
-=item get_all_events
-
-=back 
+=head1 METHODS
 
 =head1 DEPENDENCIES
 
 Moose::Role
 
-=head1 AUTHOR
+=head1 AUTHORS
 
-Chris Prather (chris@prather.org)
+=over 4
 
-=head1 LICENCE
+=item *
 
-Copyright 2009 by Chris Prather.
+Chris Prather <chris@prather.org>
 
-This software is free.  It is licensed under the same terms as Perl itself.
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=item *
+
+Chris Williams <chris@bingosnet.co.uk>
+
+=item *
+
+Yuval (nothingmuch) Kogman
+
+=item *
+
+Torsten Raudssus <getty@cpan.org>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Chris Prather, Ash Berlin, Chris Williams, Yuval Kogman, Torsten Raudssus.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+

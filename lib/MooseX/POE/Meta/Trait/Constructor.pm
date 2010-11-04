@@ -1,4 +1,8 @@
 package MooseX::POE::Meta::Trait::Constructor;
+BEGIN {
+  $MooseX::POE::Meta::Trait::Constructor::VERSION = '0.210';
+}
+# ABSTRACT: Yeah something even more boring
 
 use Moose::Role;
 
@@ -38,19 +42,21 @@ no Moose::Role;
 
 1;
 
-__END__
+
+
+=pod
 
 =head1 NAME
 
-MooseX::POE::Meta::Trait::Constructor
+MooseX::POE::Meta::Trait::Constructor - Yeah something even more boring
 
 =head1 VERSION
 
-This documentation refers to version 0.01.
+version 0.210
 
 =head1 SYNOPSIS
 
-use MooseX::POE::Meta::Trait::Constructor;
+  use MooseX::POE::Meta::Trait::Constructor;
 
 =head1 DESCRIPTION
 
@@ -60,18 +66,41 @@ The MooseX::POE::Meta::Trait::Constructor class implements ...
 
 There are no public methods.
 
-=head1 DEPENDENCIES
+=head1 AUTHORS
 
-Moose::Role
+=over 4
 
-=head1 AUTHOR
+=item *
 
-Chris Prather (chris@prather.org)
+Chris Prather <chris@prather.org>
 
-=head1 LICENCE
+=item *
 
-Copyright 2009 by Chris Prather.
+Ash Berlin <ash@cpan.org>
 
-This software is free.  It is licensed under the same terms as Perl itself.
+=item *
+
+Chris Williams <chris@bingosnet.co.uk>
+
+=item *
+
+Yuval (nothingmuch) Kogman
+
+=item *
+
+Torsten Raudssus <getty@cpan.org>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Chris Prather, Ash Berlin, Chris Williams, Yuval Kogman, Torsten Raudssus.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+

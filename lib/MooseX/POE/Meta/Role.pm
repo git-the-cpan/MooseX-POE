@@ -1,4 +1,8 @@
 package MooseX::POE::Meta::Role;
+BEGIN {
+  $MooseX::POE::Meta::Role::VERSION = '0.210';
+}
+# ABSTRACT: Pay no attention to this.
 use Moose::Role;
 with qw(MooseX::POE::Meta::Trait);
 
@@ -19,4 +23,51 @@ around get_state_method_name => sub {
 no Moose::Role;
 
 1;
+
+
+__END__
+=pod
+
+=head1 NAME
+
+MooseX::POE::Meta::Role - Pay no attention to this.
+
+=head1 VERSION
+
+version 0.210
+
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+Chris Prather <chris@prather.org>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=item *
+
+Chris Williams <chris@bingosnet.co.uk>
+
+=item *
+
+Yuval (nothingmuch) Kogman
+
+=item *
+
+Torsten Raudssus <getty@cpan.org>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Chris Prather, Ash Berlin, Chris Williams, Yuval Kogman, Torsten Raudssus.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
 

@@ -1,4 +1,8 @@
 package MooseX::POE::Role;
+BEGIN {
+  $MooseX::POE::Role::VERSION = '0.210';
+}
+# ABSTRACT: Eventful roles
 use MooseX::POE::Meta::Role;
 
 use Moose::Exporter;
@@ -31,11 +35,17 @@ sub event {
 
 
 1;
-__END__
+
+
+=pod
 
 =head1 NAME
 
 MooseX::POE::Role - Eventful roles
+
+=head1 VERSION
+
+version 0.210
 
 =head1 SYNOPSIS
 
@@ -47,38 +57,57 @@ MooseX::POE::Role - Eventful roles
     package RealCounter;
 
     with qw(Counter);
-  
+
 =head1 DESCRIPTION
 
-This is what MooseX::POE is to Moose but with Moose::Role.
+This is what L<MooseX::POE> is to Moose but with L<Moose::Role>.
 
-=head1 KEYWORDS
+=head1 METHODS
 
-=over
-
-=item event $name $subref
+=head2 event $name $subref
 
 Create an event handler named $name. 
 
+=head1 KEYWORDS
+
+=for :list * L<MooseX::POE|MooseX::POE>
+* L<Moose::Role> 
+
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+Chris Prather <chris@prather.org>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=item *
+
+Chris Williams <chris@bingosnet.co.uk>
+
+=item *
+
+Yuval (nothingmuch) Kogman
+
+=item *
+
+Torsten Raudssus <getty@cpan.org>
+
 =back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Chris Prather, Ash Berlin, Chris Williams, Yuval Kogman, Torsten Raudssus.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
 
-=head1 SEE ALSO
 
-L<MooseX::POE>
-
-=head1 AUTHOR
-
-Chris Prather  C<< <perigrin@cpan.org> >>
-
-Ash Berlin C<< <ash@cpan.org> >>
-
-=head1 LICENCE AND COPYRIGHT
-
-Copyright (c) 2007-2009, Chris Prather C<< <perigrin@cpan.org> >>, Ash Berlin
-C<< <ash@cpan.org> >>. All rights reserved.
-
-This module is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself. See L<perlartistic>.
+__END__
 

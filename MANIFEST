@@ -1,6 +1,14 @@
+Changes
+LICENSE
+MANIFEST
+META.json
+META.yml
+Makefile.PL
+README
+README.md
 bench/forkbomb.perl
 bench/moose.forkbomb.pl
-Changes
+dist.ini
 ex/candygram.pl
 ex/serial_watcher.pl
 ex/tbray/tbray_baseline.pl
@@ -11,16 +19,6 @@ ex/tbray/tbray_poe.pl
 ex/tbray/tbray_poe_workers.pl
 ex/tbray/wf_mmap.pl
 ex/tbray/widefinder.pl
-inc/Module/Install.pm
-inc/Module/Install/AutoManifest.pm
-inc/Module/Install/Base.pm
-inc/Module/Install/Can.pm
-inc/Module/Install/Fetch.pm
-inc/Module/Install/Makefile.pm
-inc/Module/Install/Metadata.pm
-inc/Module/Install/Repository.pm
-inc/Module/Install/Win32.pm
-inc/Module/Install/WriteAll.pm
 lib/MooseX/POE.pm
 lib/MooseX/POE/Aliased.pm
 lib/MooseX/POE/Meta/Method/State.pm
@@ -33,10 +31,6 @@ lib/MooseX/POE/Meta/Trait/Object.pm
 lib/MooseX/POE/Meta/Trait/SweetArgs.pm
 lib/MooseX/POE/Role.pm
 lib/MooseX/POE/SweetArgs.pm
-Makefile.PL
-MANIFEST			This list of files
-META.yml
-README.md
 t/01_basic.t
 t/02_poe_forkbomb.t
 t/03_extend.t
@@ -54,3 +48,4 @@ t/12_more_roles.t
 t/13_method_modifiers.t
 t/14_bug_double_build.t
 t/15_timers.t
+t/release-pod-syntax.t

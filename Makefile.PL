@@ -1,18 +1,54 @@
-# Load the Module::Install bundled in ./inc/
-use inc::Module::Install 0.79;
 
-# Define metadata
-name 'MooseX-POE';
-all_from 'lib/MooseX/POE.pm';
+use strict;
+use warnings;
 
-# Specific dependencies
-requires 'Moose'         => '0.90';
-requires 'POE'           => '1.004';
 
-build_requires 'Test::More' => '0.90';
 
-no_index 'directory' => 'ex';
+use ExtUtils::MakeMaker 6.31;
 
-auto_set_repository;
-auto_manifest;
-WriteAll;
+
+
+my %WriteMakefileArgs = (
+  'ABSTRACT' => 'The Illicit Love Child of Moose and POE',
+  'AUTHOR' => 'Chris Prather <chris@prather.org>, Ash Berlin <ash@cpan.org>, Chris Williams <chris@bingosnet.co.uk>, Yuval (nothingmuch) Kogman, Torsten Raudssus <getty@cpan.org>',
+  'BUILD_REQUIRES' => {
+    'Test::More' => '0.90'
+  },
+  'CONFIGURE_REQUIRES' => {
+    'ExtUtils::MakeMaker' => '6.31'
+  },
+  'DISTNAME' => 'MooseX-POE',
+  'EXE_FILES' => [],
+  'LICENSE' => 'perl',
+  'NAME' => 'MooseX::POE',
+  'PREREQ_PM' => {
+    'Moose' => '0.90',
+    'POE' => '1.004'
+  },
+  'VERSION' => '0.210',
+  'test' => {
+    'TESTS' => 't/*.t'
+  }
+);
+
+
+unless ( eval { ExtUtils::MakeMaker->VERSION(6.56) } ) {
+  my $br = delete $WriteMakefileArgs{BUILD_REQUIRES};
+  my $pp = $WriteMakefileArgs{PREREQ_PM};
+  for my $mod ( keys %$br ) {
+    if ( exists $pp->{$mod} ) {
+      $pp->{$mod} = $br->{$mod} if $br->{$mod} > $pp->{$mod};
+    }
+    else {
+      $pp->{$mod} = $br->{$mod};
+    }
+  }
+}
+
+delete $WriteMakefileArgs{CONFIGURE_REQUIRES}
+  unless eval { ExtUtils::MakeMaker->VERSION(6.52) };
+
+WriteMakefile(%WriteMakefileArgs);
+
+
+

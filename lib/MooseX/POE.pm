@@ -1,6 +1,8 @@
 package MooseX::POE;
-
-our $VERSION = '0.209';
+BEGIN {
+  $MooseX::POE::VERSION = '0.210';
+}
+# ABSTRACT: The Illicit Love Child of Moose and POE
 
 use Moose ();
 use Moose::Exporter;
@@ -35,7 +37,9 @@ sub event {
 }
 
 1;
-__END__
+
+
+=pod
 
 =head1 NAME
 
@@ -43,7 +47,7 @@ MooseX::POE - The Illicit Love Child of Moose and POE
 
 =head1 VERSION
 
-This document describes MooseX::POE version 0.209
+version 0.210
 
 =head1 SYNOPSIS
 
@@ -104,17 +108,50 @@ or with L<MooseX::Declare|MooseX::Declare>:
 
 =head1 DESCRIPTION
 
-MooseX::POE is a Moose wrapper around a POE::Session.
+MooseX::POE is a L<Moose> wrapper around a L<POE::Session>.
 
-=head1 KEYWORDS
+=head1 METHODS
 
-=over
-
-=item event $name $subref
+=head2 event $name $subref
 
 Create an event handler named $name. 
 
-=back
+=head2 get_session_id
+
+Get the internal POE Session ID, this is useful to hand to other POE aware
+functions.
+
+=head2 yield
+
+=head2 call
+
+=head2 delay
+
+=head2 alarm
+
+=head2 alarm_add
+
+=head2 delay_add
+
+=head2 alarm_set
+
+=head2 alarm_adjust
+
+=head2 alarm_remove
+
+=head2 alarm_remove_all
+
+=head2 delay_set
+
+=head2 delay_adjust
+
+A cheap alias for the same POE::Kernel function which will gurantee posting to the object's session.
+
+=head2 STARTALL
+
+=head2 STOPALL
+
+=head1 KEYWORDS
 
 =head1 METHODS
 
@@ -123,46 +160,7 @@ which is applied to your base class (which is usually L<Moose::Object|Moose::Obj
 you use this module. See that module for the documentation for. Below is a list
 of methods on that class so you know what to look for:
 
-=over
-
-=item get_session_id
-
-Get the internal POE Session ID, this is useful to hand to other POE aware
-functions.
-
-=item yield
-
-=item call
-
-=item delay
-
-=item alarm
-
-=item alarm_add
-
-=item delay_add
-
-=item alarm_set
-
-=item alarm_adjust
-
-=item alarm_remove
-
-=item alarm_remove_all
-
-=item delay_set
-
-=item delay_adjust
-
-A cheap alias for the same POE::Kernel function which will gurantee posting to the object's session.
-
-=item STARTALL
-
-=item STOPALL
-
-=back
-
-=head1 NOTES ON USAGE WITH L<MooseX::Declare|MooseX::Declare>
+=head1 NOTES ON USAGE WITH L<MooseX::Declare>
 
 L<MooseX::Declare|MooseX::Declare> support is still "experimental". Meaning that I don't use it,
 I don't have any code that uses it, and thus I can't adequately say that it
@@ -176,8 +174,8 @@ integration issue that is being resolved but I want to wait for
 L<MooseX::Declare|MooseX::Declare> to gain some more polish on their slurpy
 arguments.
 
-2. MooseX::POE attempts to re-export L<Moose|Moose>, which
-L<MooseX::Declare|MooseX::Declare> has already exported in a custom fashion.
+2. MooseX::POE attempts to re-export L<Moose>, which
+L<MooseX::Declare> has already exported in a custom fashion.
 This means that you'll get a keyword clash between the features that
 L<MooseX::Declare|MooseX::Declare> handles for you and the features that Moose
 handles. To work around this you'll need to write:
@@ -193,52 +191,46 @@ L<MooseX::Declare|MooseX::Declare> doesn't like. This is fixed in the Git
 version of L<MooseX::Declare|MooseX::Declare> but that version (as of this
 writing) is not on the CPAN.
 
-=head1 DEPENDENCIES
+=head1 SEE ALSO
 
-L<Moose|Moose> 
+=for :list * L<Moose|Moose> 
+* L<POE|POE>
 
-L<POE|POE>
+=head1 AUTHORS
 
-=head1 AUTHOR
+=over 4
 
-Chris Prather  C<< <chris@prather.org> >>
+=item *
 
-Ash Berlin C<< <ash@cpan.org> >>
+Chris Prather <chris@prather.org>
 
-Chris Williams C<< <chris@bingosnet.co.uk> >>
+=item *
 
-Yuval (nothingmuch) Kogman 
+Ash Berlin <ash@cpan.org>
 
-Torsten Raudssus C<< <getty@cpan.org> >>
+=item *
 
-=head1 LICENCE AND COPYRIGHT
+Chris Williams <chris@bingosnet.co.uk>
 
-Copyright (c) 2007-2009, Chris Prather C<< <chris@prather.org> >>, Ash Berlin
-C<< <ash@cpan.org> >>, Chris Williams C<< <chris@bingosnet.co.uk> >>, Yuval
-(nothingmuch) Kogman, Torsten Raudssus C<< <getty@cpan.org> >>. Some rights reserved.
+=item *
 
-This module is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself. See L<perlartistic>.
+Yuval (nothingmuch) Kogman
 
-=head1 DISCLAIMER OF WARRANTY
+=item *
 
-BECAUSE THIS SOFTWARE IS LICENSED FREE OF CHARGE, THERE IS NO WARRANTY
-FOR THE SOFTWARE, TO THE EXTENT PERMITTED BY APPLICABLE LAW. EXCEPT WHEN
-OTHERWISE STATED IN WRITING THE COPYRIGHT HOLDERS AND/OR OTHER PARTIES
-PROVIDE THE SOFTWARE "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER
-EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE. THE
-ENTIRE RISK AS TO THE QUALITY AND PERFORMANCE OF THE SOFTWARE IS WITH
-YOU. SHOULD THE SOFTWARE PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL
-NECESSARY SERVICING, REPAIR, OR CORRECTION.
+Torsten Raudssus <getty@cpan.org>
 
-IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW OR AGREED TO IN WRITING
-WILL ANY COPYRIGHT HOLDER, OR ANY OTHER PARTY WHO MAY MODIFY AND/OR
-REDISTRIBUTE THE SOFTWARE AS PERMITTED BY THE ABOVE LICENCE, BE
-LIABLE TO YOU FOR DAMAGES, INCLUDING ANY GENERAL, SPECIAL, INCIDENTAL,
-OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR INABILITY TO USE
-THE SOFTWARE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA BEING
-RENDERED INACCURATE OR LOSSES SUSTAINED BY YOU OR THIRD PARTIES OR A
-FAILURE OF THE SOFTWARE TO OPERATE WITH ANY OTHER SOFTWARE), EVEN IF
-SUCH HOLDER OR OTHER PARTY HAS BEEN ADVISED OF THE POSSIBILITY OF
-SUCH DAMAGES.
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Chris Prather, Ash Berlin, Chris Williams, Yuval Kogman, Torsten Raudssus.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
+=cut
+
+
+__END__
+

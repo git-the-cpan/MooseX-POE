@@ -1,7 +1,12 @@
 package MooseX::POE::Aliased;
+BEGIN {
+  $MooseX::POE::Aliased::VERSION = '0.210';
+}
 use MooseX::POE::Role;
 
 use overload ();
+
+# ABSTRACT: A sane alias attribute for your MooseX::POE objects.
 
 use POE;
 
@@ -39,16 +44,19 @@ event _update_alias => sub {
 	$kernel->alias_set($alias) if defined $alias;
 };
 
-__PACKAGE__
+__PACKAGE__;
 
-__END__
+
 
 =pod
 
 =head1 NAME
 
-MooseX::POE::Aliased - A sane C<alias> attribute for your L<MooseX::POE>
-objects.
+MooseX::POE::Aliased - A sane alias attribute for your MooseX::POE objects.
+
+=head1 VERSION
+
+version 0.210
 
 =head1 SYNOPSIS
 
@@ -69,11 +77,9 @@ This role provides an C<alias> attribute for your L<MooseX::POE> objects.
 The attribute can be set, causing the current alias to be cleared and the new
 value to be set.
 
-=head1 ATTRIBUTES
+=head1 METHODS
 
-=over 4
-
-=item alias
+=head2 alias
 
 The alias to set for the session.
 
@@ -83,8 +89,45 @@ If the value is set at runtime the alias will be updated in the L<POE::Kernel>.
 
 A value of C<undef> inhibits aliasing.
 
+=head1 ATTRIBUTES
+
+=head1 AUTHORS
+
+=over 4
+
+=item *
+
+Chris Prather <chris@prather.org>
+
+=item *
+
+Ash Berlin <ash@cpan.org>
+
+=item *
+
+Chris Williams <chris@bingosnet.co.uk>
+
+=item *
+
+Yuval (nothingmuch) Kogman
+
+=item *
+
+Torsten Raudssus <getty@cpan.org>
+
 =back
 
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Chris Prather, Ash Berlin, Chris Williams, Yuval Kogman, Torsten Raudssus.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
+
 =cut
+
+
+__END__
+
 
 

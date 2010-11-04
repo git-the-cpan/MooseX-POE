@@ -1,4 +1,8 @@
 package MooseX::POE::SweetArgs;
+BEGIN {
+  $MooseX::POE::SweetArgs::VERSION = '0.210';
+}
+# ABSTRACT: sugar around MooseX::POE event arguments
 
 use Moose ();
 use MooseX::POE;
@@ -24,9 +28,16 @@ sub init_meta {
 
 1;
 
+
+=pod
+
 =head1 NAME
 
 MooseX::POE::SweetArgs - sugar around MooseX::POE event arguments
+
+=head1 VERSION
+
+version 0.210
 
 =head1 SYNOPSIS
 
@@ -59,24 +70,43 @@ shown in the synopsis.
 
 In all other respects, this behaves exactly like MooseX::POE
 
-=head1 SEE ALSO
+=for :list * L<MooseX::POE|MooseX::POE>
 
-L<MooseX::POE>
+=head1 AUTHORS
 
-=head1 AUTHOR
+=over 4
 
-Chris Prather  C<< <perigrin@cpan.org> >>
+=item *
 
-Ash Berlin C<< <ash@cpan.org> >>
+Chris Prather <chris@prather.org>
 
-Hans Dieter Pearcey
+=item *
 
-=head1 LICENCE AND COPYRIGHT
+Ash Berlin <ash@cpan.org>
 
-Copyright (c) 2007-2009, Chris Prather C<< <perigrin@cpan.org> >>, Ash Berlin
-C<< <ash@cpan.org> >>. All rights reserved.
+=item *
 
-This module is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself. See L<perlartistic>.
+Chris Williams <chris@bingosnet.co.uk>
+
+=item *
+
+Yuval (nothingmuch) Kogman
+
+=item *
+
+Torsten Raudssus <getty@cpan.org>
+
+=back
+
+=head1 COPYRIGHT AND LICENSE
+
+This software is copyright (c) 2010 by Chris Prather, Ash Berlin, Chris Williams, Yuval Kogman, Torsten Raudssus.
+
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
 
 =cut
+
+
+__END__
+
