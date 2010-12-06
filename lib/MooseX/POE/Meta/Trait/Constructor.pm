@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait::Constructor;
 BEGIN {
-  $MooseX::POE::Meta::Trait::Constructor::VERSION = '0.210';
+  $MooseX::POE::Meta::Trait::Constructor::VERSION = '0.211';
 }
 # ABSTRACT: Yeah something even more boring
 
@@ -52,7 +52,7 @@ MooseX::POE::Meta::Trait::Constructor - Yeah something even more boring
 
 =head1 VERSION
 
-version 0.210
+version 0.211
 
 =head1 SYNOPSIS
 
@@ -88,7 +88,7 @@ Yuval (nothingmuch) Kogman
 
 =item *
 
-Torsten Raudssus <getty@cpan.org>
+Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
 =back
 

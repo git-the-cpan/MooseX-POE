@@ -1,12 +1,11 @@
 package MooseX::POE::Aliased;
 BEGIN {
-  $MooseX::POE::Aliased::VERSION = '0.210';
+  $MooseX::POE::Aliased::VERSION = '0.211';
 }
+# ABSTRACT: A sane alias attribute for your MooseX::POE objects.
 use MooseX::POE::Role;
 
 use overload ();
-
-# ABSTRACT: A sane alias attribute for your MooseX::POE objects.
 
 use POE;
 
@@ -56,7 +55,7 @@ MooseX::POE::Aliased - A sane alias attribute for your MooseX::POE objects.
 
 =head1 VERSION
 
-version 0.210
+version 0.211
 
 =head1 SYNOPSIS
 
@@ -113,7 +112,7 @@ Yuval (nothingmuch) Kogman
 
 =item *
 
-Torsten Raudssus <getty@cpan.org>
+Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
 =back
 

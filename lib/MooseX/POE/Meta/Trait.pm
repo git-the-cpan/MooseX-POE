@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait;
 BEGIN {
-  $MooseX::POE::Meta::Trait::VERSION = '0.210';
+  $MooseX::POE::Meta::Trait::VERSION = '0.211';
 }
 # ABSTRACT: There be dragons here.
 use Moose::Role;
@@ -57,7 +57,7 @@ MooseX::POE::Meta::Trait - There be dragons here.
 
 =head1 VERSION
 
-version 0.210
+version 0.211
 
 =head1 AUTHORS
 
@@ -81,7 +81,7 @@ Yuval (nothingmuch) Kogman
 
 =item *
 
-Torsten Raudssus <getty@cpan.org>
+Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
 =back
 

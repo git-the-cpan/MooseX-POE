@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Role;
 BEGIN {
-  $MooseX::POE::Meta::Role::VERSION = '0.210';
+  $MooseX::POE::Meta::Role::VERSION = '0.211';
 }
 # ABSTRACT: Pay no attention to this.
 use Moose::Role;
@@ -34,7 +34,7 @@ MooseX::POE::Meta::Role - Pay no attention to this.
 
 =head1 VERSION
 
-version 0.210
+version 0.211
 
 =head1 AUTHORS
 
@@ -58,7 +58,7 @@ Yuval (nothingmuch) Kogman
 
 =item *
 
-Torsten Raudssus <getty@cpan.org>
+Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
 =back
 

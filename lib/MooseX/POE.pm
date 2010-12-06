@@ -1,6 +1,6 @@
 package MooseX::POE;
 BEGIN {
-  $MooseX::POE::VERSION = '0.210';
+  $MooseX::POE::VERSION = '0.211';
 }
 # ABSTRACT: The Illicit Love Child of Moose and POE
 
@@ -47,7 +47,7 @@ MooseX::POE - The Illicit Love Child of Moose and POE
 
 =head1 VERSION
 
-version 0.210
+version 0.211
 
 =head1 SYNOPSIS
 
@@ -218,7 +218,7 @@ Yuval (nothingmuch) Kogman
 
 =item *
 
-Torsten Raudssus <getty@cpan.org>
+Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
 =back
 

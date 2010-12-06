@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait::SweetArgs;
 BEGIN {
-  $MooseX::POE::Meta::Trait::SweetArgs::VERSION = '0.210';
+  $MooseX::POE::Meta::Trait::SweetArgs::VERSION = '0.211';
 }
 # ABSTRACT: Yes, its a trap... i mean trait
 
@@ -27,7 +27,7 @@ MooseX::POE::Meta::Trait::SweetArgs - Yes, its a trap... i mean trait
 
 =head1 VERSION
 
-version 0.210
+version 0.211
 
 =head1 SYNOPSIS
 
@@ -63,7 +63,7 @@ Yuval (nothingmuch) Kogman
 
 =item *
 
-Torsten Raudssus <getty@cpan.org>
+Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
 =back
 

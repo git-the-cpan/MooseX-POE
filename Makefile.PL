@@ -10,8 +10,9 @@ use ExtUtils::MakeMaker 6.31;
 
 my %WriteMakefileArgs = (
   'ABSTRACT' => 'The Illicit Love Child of Moose and POE',
-  'AUTHOR' => 'Chris Prather <chris@prather.org>, Ash Berlin <ash@cpan.org>, Chris Williams <chris@bingosnet.co.uk>, Yuval (nothingmuch) Kogman, Torsten Raudssus <getty@cpan.org>',
+  'AUTHOR' => 'Chris Prather <chris@prather.org>, Ash Berlin <ash@cpan.org>, Chris Williams <chris@bingosnet.co.uk>, Yuval (nothingmuch) Kogman, Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>',
   'BUILD_REQUIRES' => {
+    'Test::Fatal' => '0.003',
     'Test::More' => '0.90'
   },
   'CONFIGURE_REQUIRES' => {
@@ -25,7 +26,7 @@ my %WriteMakefileArgs = (
     'Moose' => '0.90',
     'POE' => '1.004'
   },
-  'VERSION' => '0.210',
+  'VERSION' => '0.211',
   'test' => {
     'TESTS' => 't/*.t'
   }

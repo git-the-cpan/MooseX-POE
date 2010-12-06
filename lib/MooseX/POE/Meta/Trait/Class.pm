@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait::Class;
 BEGIN {
-  $MooseX::POE::Meta::Trait::Class::VERSION = '0.210';
+  $MooseX::POE::Meta::Trait::Class::VERSION = '0.211';
 }
 # ABSTRACT: No achmed inside
 use Moose::Role;
@@ -64,7 +64,7 @@ MooseX::POE::Meta::Trait::Class - No achmed inside
 
 =head1 VERSION
 
-version 0.210
+version 0.211
 
 =head1 METHODS
 
@@ -98,7 +98,7 @@ Yuval (nothingmuch) Kogman
 
 =item *
 
-Torsten Raudssus <getty@cpan.org>
+Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
 =back
 

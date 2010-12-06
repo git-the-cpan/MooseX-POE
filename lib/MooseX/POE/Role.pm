@@ -1,6 +1,6 @@
 package MooseX::POE::Role;
 BEGIN {
-  $MooseX::POE::Role::VERSION = '0.210';
+  $MooseX::POE::Role::VERSION = '0.211';
 }
 # ABSTRACT: Eventful roles
 use MooseX::POE::Meta::Role;
@@ -45,7 +45,7 @@ MooseX::POE::Role - Eventful roles
 
 =head1 VERSION
 
-version 0.210
+version 0.211
 
 =head1 SYNOPSIS
 
@@ -95,7 +95,7 @@ Yuval (nothingmuch) Kogman
 
 =item *
 
-Torsten Raudssus <getty@cpan.org>
+Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
 =back
 

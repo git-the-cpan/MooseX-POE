@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait::Object;
 BEGIN {
-  $MooseX::POE::Meta::Trait::Object::VERSION = '0.210';
+  $MooseX::POE::Meta::Trait::Object::VERSION = '0.211';
 }
 # ABSTRACT: The base class role for MooseX::POE
 
@@ -110,7 +110,7 @@ MooseX::POE::Meta::Trait::Object - The base class role for MooseX::POE
 
 =head1 VERSION
 
-version 0.210
+version 0.211
 
 =head1 SYNOPSIS
 
@@ -228,7 +228,7 @@ Yuval (nothingmuch) Kogman
 
 =item *
 
-Torsten Raudssus <getty@cpan.org>
+Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
 =back
 

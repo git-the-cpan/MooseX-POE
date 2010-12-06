@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Method::State;
 BEGIN {
-  $MooseX::POE::Meta::Method::State::VERSION = '0.210';
+  $MooseX::POE::Meta::Method::State::VERSION = '0.211';
 }
 # ABSTRACT: Dont look into this, its boring
 use strict;
@@ -19,7 +19,7 @@ MooseX::POE::Meta::Method::State - Dont look into this, its boring
 
 =head1 VERSION
 
-version 0.210
+version 0.211
 
 =head1 AUTHORS
 
@@ -43,7 +43,7 @@ Yuval (nothingmuch) Kogman
 
 =item *
 
-Torsten Raudssus <getty@cpan.org>
+Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
 =back
 

@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait::Instance;
 BEGIN {
-  $MooseX::POE::Meta::Trait::Instance::VERSION = '0.210';
+  $MooseX::POE::Meta::Trait::Instance::VERSION = '0.211';
 }
 # ABSTRACT: A Instance Metaclass for MooseX::POE
 
@@ -52,7 +52,7 @@ MooseX::POE::Meta::Trait::Instance - A Instance Metaclass for MooseX::POE
 
 =head1 VERSION
 
-version 0.210
+version 0.211
 
 =head1 SYNOPSIS
 
@@ -111,7 +111,7 @@ Yuval (nothingmuch) Kogman
 
 =item *
 
-Torsten Raudssus <getty@cpan.org>
+Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>
 
 =back
 
