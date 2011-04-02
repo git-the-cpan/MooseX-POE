@@ -1,6 +1,6 @@
 package MooseX::POE;
 BEGIN {
-  $MooseX::POE::VERSION = '0.211';
+  $MooseX::POE::VERSION = '0.212';
 }
 # ABSTRACT: The Illicit Love Child of Moose and POE
 
@@ -13,7 +13,6 @@ my ( $import, $unimport, $init_meta ) = Moose::Exporter->setup_import_methods(
     install         => [qw(import unimport)],
     class_metaroles => {
         class       => ['MooseX::POE::Meta::Trait::Class'],
-        constructor => ['MooseX::POE::Meta::Trait::Constructor'],
         instance    => ['MooseX::POE::Meta::Trait::Instance'],
     },
     base_class_roles => ['MooseX::POE::Meta::Trait::Object'],
@@ -47,7 +46,7 @@ MooseX::POE - The Illicit Love Child of Moose and POE
 
 =head1 VERSION
 
-version 0.211
+version 0.212
 
 =head1 SYNOPSIS
 

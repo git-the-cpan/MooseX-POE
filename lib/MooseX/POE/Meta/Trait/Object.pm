@@ -1,16 +1,14 @@
 package MooseX::POE::Meta::Trait::Object;
 BEGIN {
-  $MooseX::POE::Meta::Trait::Object::VERSION = '0.211';
+  $MooseX::POE::Meta::Trait::Object::VERSION = '0.212';
 }
 # ABSTRACT: The base class role for MooseX::POE
 
 use Moose::Role;
 use POE::Session;
 
-sub new {
-    my $class  = shift;
-    my $params = $class->BUILDARGS(@_);
-    my $self   = $class->meta->new_object($params);
+sub BUILD {
+    my $self = shift;
 
     my $session = POE::Session->create(
         inline_states =>
@@ -29,9 +27,6 @@ sub new {
         heap => ( $self->{heap} ||= {} ),
     );
     $self->{session_id} = $session->ID;
-
-    $self->BUILDALL($params);
-    return $self;
 }
 
 sub get_session_id {
@@ -110,7 +105,7 @@ MooseX::POE::Meta::Trait::Object - The base class role for MooseX::POE
 
 =head1 VERSION
 
-version 0.211
+version 0.212
 
 =head1 SYNOPSIS
 

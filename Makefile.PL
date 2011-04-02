@@ -26,7 +26,7 @@ my %WriteMakefileArgs = (
     'Moose' => '0.90',
     'POE' => '1.004'
   },
-  'VERSION' => '0.211',
+  'VERSION' => '0.212',
   'test' => {
     'TESTS' => 't/*.t'
   }

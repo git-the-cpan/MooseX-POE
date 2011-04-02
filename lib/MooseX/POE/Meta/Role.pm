@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Role;
 BEGIN {
-  $MooseX::POE::Meta::Role::VERSION = '0.211';
+  $MooseX::POE::Meta::Role::VERSION = '0.212';
 }
 # ABSTRACT: Pay no attention to this.
 use Moose::Role;
@@ -34,7 +34,7 @@ MooseX::POE::Meta::Role - Pay no attention to this.
 
 =head1 VERSION
 
-version 0.211
+version 0.212
 
 =head1 AUTHORS
 

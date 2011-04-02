@@ -25,7 +25,6 @@ lib/MooseX/POE/Meta/Method/State.pm
 lib/MooseX/POE/Meta/Role.pm
 lib/MooseX/POE/Meta/Trait.pm
 lib/MooseX/POE/Meta/Trait/Class.pm
-lib/MooseX/POE/Meta/Trait/Constructor.pm
 lib/MooseX/POE/Meta/Trait/Instance.pm
 lib/MooseX/POE/Meta/Trait/Object.pm
 lib/MooseX/POE/Meta/Trait/SweetArgs.pm
