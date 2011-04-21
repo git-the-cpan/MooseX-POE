@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait::Object;
 BEGIN {
-  $MooseX::POE::Meta::Trait::Object::VERSION = '0.212';
+  $MooseX::POE::Meta::Trait::Object::VERSION = '0.213';
 }
 # ABSTRACT: The base class role for MooseX::POE
 
@@ -12,7 +12,7 @@ sub BUILD {
 
     my $session = POE::Session->create(
         inline_states =>
-            { _start => sub { POE::Kernel->yield('STARTALL') }, },
+            { _start => sub { POE::Kernel->yield('STARTALL', \$_[5] ) }, },
         object_states => [
             $self => {
                 $self->meta->get_all_events,
@@ -105,7 +105,7 @@ MooseX::POE::Meta::Trait::Object - The base class role for MooseX::POE
 
 =head1 VERSION
 
-version 0.212
+version 0.213
 
 =head1 SYNOPSIS
 

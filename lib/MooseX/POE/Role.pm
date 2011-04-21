@@ -1,6 +1,6 @@
 package MooseX::POE::Role;
 BEGIN {
-  $MooseX::POE::Role::VERSION = '0.212';
+  $MooseX::POE::Role::VERSION = '0.213';
 }
 # ABSTRACT: Eventful roles
 use MooseX::POE::Meta::Role;
@@ -45,7 +45,7 @@ MooseX::POE::Role - Eventful roles
 
 =head1 VERSION
 
-version 0.212
+version 0.213
 
 =head1 SYNOPSIS
 

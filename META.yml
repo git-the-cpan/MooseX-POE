@@ -27,7 +27,7 @@ requires:
 resources:
   homepage: http://github.com/perigrin/moosex-poe/tree
   repository: git://github.com/perigrin/moosex-poe.git
-version: 0.212
+version: 0.213
 x_Dist_Zilla:
   plugins:
     -

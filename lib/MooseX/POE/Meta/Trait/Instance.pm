@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait::Instance;
 BEGIN {
-  $MooseX::POE::Meta::Trait::Instance::VERSION = '0.212';
+  $MooseX::POE::Meta::Trait::Instance::VERSION = '0.213';
 }
 # ABSTRACT: A Instance Metaclass for MooseX::POE
 
@@ -52,7 +52,7 @@ MooseX::POE::Meta::Trait::Instance - A Instance Metaclass for MooseX::POE
 
 =head1 VERSION
 
-version 0.212
+version 0.213
 
 =head1 SYNOPSIS
 
