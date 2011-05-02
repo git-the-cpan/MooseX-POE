@@ -1,6 +1,6 @@
 package MooseX::POE;
 BEGIN {
-  $MooseX::POE::VERSION = '0.213';
+  $MooseX::POE::VERSION = '0.214';
 }
 # ABSTRACT: The Illicit Love Child of Moose and POE
 
@@ -46,7 +46,7 @@ MooseX::POE - The Illicit Love Child of Moose and POE
 
 =head1 VERSION
 
-version 0.213
+version 0.214
 
 =head1 SYNOPSIS
 

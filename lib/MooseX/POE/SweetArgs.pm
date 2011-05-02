@@ -1,6 +1,6 @@
 package MooseX::POE::SweetArgs;
 BEGIN {
-  $MooseX::POE::SweetArgs::VERSION = '0.213';
+  $MooseX::POE::SweetArgs::VERSION = '0.214';
 }
 # ABSTRACT: sugar around MooseX::POE event arguments
 
@@ -37,7 +37,7 @@ MooseX::POE::SweetArgs - sugar around MooseX::POE event arguments
 
 =head1 VERSION
 
-version 0.213
+version 0.214
 
 =head1 SYNOPSIS
 

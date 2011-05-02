@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait::Object;
 BEGIN {
-  $MooseX::POE::Meta::Trait::Object::VERSION = '0.213';
+  $MooseX::POE::Meta::Trait::Object::VERSION = '0.214';
 }
 # ABSTRACT: The base class role for MooseX::POE
 
@@ -105,7 +105,7 @@ MooseX::POE::Meta::Trait::Object - The base class role for MooseX::POE
 
 =head1 VERSION
 
-version 0.213
+version 0.214
 
 =head1 SYNOPSIS
 

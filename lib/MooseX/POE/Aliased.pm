@@ -1,6 +1,6 @@
 package MooseX::POE::Aliased;
 BEGIN {
-  $MooseX::POE::Aliased::VERSION = '0.213';
+  $MooseX::POE::Aliased::VERSION = '0.214';
 }
 # ABSTRACT: A sane alias attribute for your MooseX::POE objects.
 use MooseX::POE::Role;
@@ -55,7 +55,7 @@ MooseX::POE::Aliased - A sane alias attribute for your MooseX::POE objects.
 
 =head1 VERSION
 
-version 0.213
+version 0.214
 
 =head1 SYNOPSIS
 

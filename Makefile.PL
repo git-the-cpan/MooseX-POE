@@ -23,10 +23,10 @@ my %WriteMakefileArgs = (
   'LICENSE' => 'perl',
   'NAME' => 'MooseX::POE',
   'PREREQ_PM' => {
-    'Moose' => '0.90',
-    'POE' => '1.004'
+    'Moose' => '2.0002',
+    'POE' => '1.310'
   },
-  'VERSION' => '0.213',
+  'VERSION' => '0.214',
   'test' => {
     'TESTS' => 't/*.t'
   }
