@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait::Class;
-BEGIN {
-  $MooseX::POE::Meta::Trait::Class::VERSION = '0.214';
+{
+  $MooseX::POE::Meta::Trait::Class::VERSION = '0.215';
 }
 # ABSTRACT: No achmed inside
 use Moose::Role;
@@ -64,7 +64,7 @@ MooseX::POE::Meta::Trait::Class - No achmed inside
 
 =head1 VERSION
 
-version 0.214
+version 0.215
 
 =head1 METHODS
 

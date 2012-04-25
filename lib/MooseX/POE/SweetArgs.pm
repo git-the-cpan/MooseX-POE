@@ -1,6 +1,6 @@
 package MooseX::POE::SweetArgs;
-BEGIN {
-  $MooseX::POE::SweetArgs::VERSION = '0.214';
+{
+  $MooseX::POE::SweetArgs::VERSION = '0.215';
 }
 # ABSTRACT: sugar around MooseX::POE event arguments
 
@@ -15,7 +15,7 @@ Moose::Exporter->setup_import_methods(
 
 sub init_meta {
     my ($class, %args) = @_;
-    MooseX::POE->init_meta(%args);
+    MooseX::POE->import({ into => $args{for_class} });
 
     Moose::Util::MetaRole::apply_metaroles(
         for             => $args{for_class},
@@ -37,7 +37,7 @@ MooseX::POE::SweetArgs - sugar around MooseX::POE event arguments
 
 =head1 VERSION
 
-version 0.214
+version 0.215
 
 =head1 SYNOPSIS
 

@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait::SweetArgs;
-BEGIN {
-  $MooseX::POE::Meta::Trait::SweetArgs::VERSION = '0.214';
+{
+  $MooseX::POE::Meta::Trait::SweetArgs::VERSION = '0.215';
 }
 # ABSTRACT: Yes, its a trap... i mean trait
 
@@ -27,7 +27,7 @@ MooseX::POE::Meta::Trait::SweetArgs - Yes, its a trap... i mean trait
 
 =head1 VERSION
 
-version 0.214
+version 0.215
 
 =head1 SYNOPSIS
 

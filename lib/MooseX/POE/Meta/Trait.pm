@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Trait;
-BEGIN {
-  $MooseX::POE::Meta::Trait::VERSION = '0.214';
+{
+  $MooseX::POE::Meta::Trait::VERSION = '0.215';
 }
 # ABSTRACT: There be dragons here.
 use Moose::Role;
@@ -57,7 +57,7 @@ MooseX::POE::Meta::Trait - There be dragons here.
 
 =head1 VERSION
 
-version 0.214
+version 0.215
 
 =head1 AUTHORS
 

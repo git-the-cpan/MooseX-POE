@@ -1,5 +1,4 @@
 use strict; use warnings;
-use Test::More skip_all => 'Moose upstream needs to sort out composition';
 
 use Test::More tests => 3;
 
@@ -17,7 +16,6 @@ use Test::More tests => 3;
 
     package App;
     use MooseX::POE;
-    with 'Rollo';
 
     sub START {
         ::pass('START');
@@ -28,6 +26,10 @@ use Test::More tests => 3;
         ::pass('foo');
         print "BAR\n";
     };
+
+    # notice how it passes if we place it here
+    # while in 04_with_before.t it fails... :(
+    with 'Rollo';
 }
 
 App->new;

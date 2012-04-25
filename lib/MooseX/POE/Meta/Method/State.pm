@@ -1,6 +1,6 @@
 package MooseX::POE::Meta::Method::State;
-BEGIN {
-  $MooseX::POE::Meta::Method::State::VERSION = '0.214';
+{
+  $MooseX::POE::Meta::Method::State::VERSION = '0.215';
 }
 # ABSTRACT: Dont look into this, its boring
 use strict;
@@ -19,7 +19,7 @@ MooseX::POE::Meta::Method::State - Dont look into this, its boring
 
 =head1 VERSION
 
-version 0.214
+version 0.215
 
 =head1 AUTHORS
 

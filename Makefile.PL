@@ -4,31 +4,31 @@ use warnings;
 
 
 
-use ExtUtils::MakeMaker 6.31;
+use ExtUtils::MakeMaker 6.30;
 
 
 
 my %WriteMakefileArgs = (
-  'ABSTRACT' => 'The Illicit Love Child of Moose and POE',
-  'AUTHOR' => 'Chris Prather <chris@prather.org>, Ash Berlin <ash@cpan.org>, Chris Williams <chris@bingosnet.co.uk>, Yuval (nothingmuch) Kogman, Torsten Raudssus <torsten@raudssus.de> L<http://www.raudssus.de/>',
-  'BUILD_REQUIRES' => {
-    'Test::Fatal' => '0.003',
-    'Test::More' => '0.90'
+  "ABSTRACT" => "The Illicit Love Child of Moose and POE",
+  "AUTHOR" => "Chris Prather <chris\@prather.org>, Ash Berlin <ash\@cpan.org>, Chris Williams <chris\@bingosnet.co.uk>, Yuval (nothingmuch) Kogman, Torsten Raudssus <torsten\@raudssus.de> L<http://www.raudssus.de/>",
+  "BUILD_REQUIRES" => {
+    "Test::Fatal" => "0.003",
+    "Test::More" => "0.90"
   },
-  'CONFIGURE_REQUIRES' => {
-    'ExtUtils::MakeMaker' => '6.31'
+  "CONFIGURE_REQUIRES" => {
+    "ExtUtils::MakeMaker" => "6.30"
   },
-  'DISTNAME' => 'MooseX-POE',
-  'EXE_FILES' => [],
-  'LICENSE' => 'perl',
-  'NAME' => 'MooseX::POE',
-  'PREREQ_PM' => {
-    'Moose' => '2.0002',
-    'POE' => '1.310'
+  "DISTNAME" => "MooseX-POE",
+  "EXE_FILES" => [],
+  "LICENSE" => "perl",
+  "NAME" => "MooseX::POE",
+  "PREREQ_PM" => {
+    "Moose" => "2.0002",
+    "POE" => "1.310"
   },
-  'VERSION' => '0.214',
-  'test' => {
-    'TESTS' => 't/*.t'
+  "VERSION" => "0.215",
+  "test" => {
+    "TESTS" => "t/*.t"
   }
 );
 
